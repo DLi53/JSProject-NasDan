@@ -1,3 +1,7 @@
-import setEventHandlers from "./scripts/main" //creating variable as import
+import ChartRenderer from './chartrenderer/chart_renderer';
 
-setEventHandlers();
+document.addEventListener("DOMContentLoaded", function () {
+    const chartRenderer = new ChartRenderer();
+    console.log(config);
+});
+

@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store 
+# DS_Store tracks changes
+# these are folders to not ignore on git
