@@ -59,7 +59,7 @@ export default class ChartRenderer {
         // console.log("updating chart...", data);
         console.log("updating chart...", data);
         console.log(data.data.week52High)
-        this.stockInfo.updateData(data.data.peRatio, data.data.volume, data.data.week52High, data.data.week52Low);
+        this.stockInfo.updateData(data.data.symbol, data.data.peRatio, data.data.volume, data.data.week52High, data.data.week52Low);
     }
 
 

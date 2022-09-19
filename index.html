@@ -18,7 +18,16 @@
 
 <body>
     <nav class="topnav">
-            <h1 id ="title">NASDAN    </h1>
+            <h1 class ="title">
+                <span style ="--i:1">N</span>
+                <span style ="--i:2">A</span>
+                <span style ="--i:3">S</span>
+                <span style ="--i:4">D</span>
+                <span style ="--i:5">A</span>
+                <span style ="--i:6">N</span>
+            </h1>
+
+
 
             <form action="" id = "search">
                 <input id="search-input" type="text" class="input-search" placeholder="Search Stock... ">
@@ -26,7 +35,7 @@
             </form>
 
             <ul class="navlinks">
-                <li><a href="#">Home</a></li>
+                <li><a href="https://www.homedepot.com/">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -36,14 +45,18 @@
     <div class ="mid-section">
         <div class="chart">   
             <canvas id="myChart"></canvas>
-            <button>1week</button>
-            <button>1month</button>
-            <button>6months</button>
-            <button>1yr</button>
+            <br>
+            <button id="1w">1week</button>
+            <button id="1m">1month</button>
+            <button id="6m">6months</button>
+            <button id="1y">1year</button>
         </div>
 
         <div class = stock-info id="stock-info">
-            <div class="stock-info-head">Stock Info</div>
+            <div class="stock-info-head">
+                <h2>Stock Info</h2>
+                <br>
+            </div>
         </div>
     </div>
     
