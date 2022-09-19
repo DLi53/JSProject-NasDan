@@ -27,7 +27,7 @@ export default class StockInfo {
 
         let disstockInfo = this.stockInfo
         let disdataList = this.dataList
-        console.log(dataLabels(disdataList));
+        // console.log(dataLabels(disdataList));
 
         while (disdataList.hasChildNodes()) {
             disdataList.removeChild(disdataList.firstChild)
