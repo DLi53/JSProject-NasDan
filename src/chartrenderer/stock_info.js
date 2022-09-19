@@ -1,20 +1,43 @@
-const dataLabels = [
-    "PE Ratio",
-    "Avg Volume",
-    "52 Week High",
-    "52 Week Low"
-]
+const dataLabels = (peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") =>  {
+    return [
+        `PE Ratios = ${peRatio}`,
+        `Avg Volume = ${avgvolume}`,
+        `52 Week High = ${wkhigh52}`,
+        `52 Week Low = ${wklow52}`
+    ]}
 
 export default class StockInfo {
     constructor() {
-        const stockInfo = document.getElementById("stock-info");
-        const dataList = document.createElement("ul");
-        for (const label of dataLabels) {
+        this.stockInfo = document.getElementById("stock-info");
+        this.dataList = document.createElement("ul");
+
+        for (const label of dataLabels()) {
             const labelElement = document.createElement("li");
             labelElement.innerHTML = label;
-            dataList.appendChild(labelElement);
+            this.dataList.appendChild(labelElement);
         }
-        stockInfo.appendChild(dataList);
+        this.stockInfo.appendChild(this.dataList);
+
     }
 
+    updateData(peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") {
+        console.log("stockInfo updating...");
+        // dataLabels = dataLabels(data)
+
+        let disstockInfo = this.stockInfo
+        let disdataList = this.dataList
+        console.log(dataLabels(disdataList));
+
+        while (disdataList.hasChildNodes()) {
+            disdataList.removeChild(disdataList.firstChild)
+        }
+
+        for (const label of dataLabels(peRatio, avgvolume, wkhigh52, wklow52)) {
+            const labelElement = document.createElement("li");
+            labelElement.innerHTML = label;
+            disdataList.appendChild(labelElement);
+        }
+        disstockInfo.appendChild(disdataList);
+  
+    }
 }

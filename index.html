@@ -8,21 +8,20 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <!-- <link rel="reset-stylesheet" href="./src/styles/reset.scss" /> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     
-    
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./dist/main.js"></script>
     <title>Project Name</title>
 </head>
 
 <body>
     <nav class="topnav">
-
             <h1 id ="title">NASDAN    </h1>
 
             <form action="" id = "search">
-                <input type="text" class="input-search" placeholder="Search Stock... ">
+                <input id="search-input" type="text" class="input-search" placeholder="Search Stock... ">
                 <button type = "button" class="search-button" >🔍</button>
             </form>
 
@@ -30,15 +29,17 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-
             </ul>
-      
     </nav>
 
 
     <div class ="mid-section">
         <div class="chart">   
             <canvas id="myChart"></canvas>
+            <button>1week</button>
+            <button>1month</button>
+            <button>6months</button>
+            <button>1yr</button>
         </div>
 
         <div class = stock-info id="stock-info">
