@@ -1,4 +1,4 @@
-const dataLabels = (symbol ='SPY',peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") =>  {
+const dataLabels = (symbol ='Stock Ticker',peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") =>  {
     return [
         `Ticker : ${symbol}`,
         `PE Ratios : ${peRatio}`,
@@ -21,7 +21,7 @@ export default class StockInfo {
 
     }
 
-    updateData(symbol = "SPY", peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") {
+    updateData(symbol = "Stock Ticker", peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") {
         console.log("stockInfo updating...");
         // dataLabels = dataLabels(data)
 

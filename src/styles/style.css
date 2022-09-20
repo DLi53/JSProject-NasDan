@@ -28,13 +28,14 @@ body {
     /* border: 50px; */
     background-color: rgb(243, 243, 243);
     border-radius: 25px;
+    
 
 }
 
 .title span {
     letter-spacing: 10px;
     display: inline-block;
-    font-size: 20px;
+    font-size: 30px;
     animation: flip 5s infinite;
     animation-delay: calc(.4s * var(--i))
 }
@@ -69,20 +70,26 @@ body {
 }
 
 button {
-    background-color: #ffffff;
-    border-radius: 50px;
+    background-color: #eaedfc;
+    border-radius: 50px ;
     cursor: pointer;
-    border: navajowhite;
-    margin-right: 15px;
+    border-color: rgb(92, 102, 244);
+    padding:10px;
+    box-shadow: 2px 1px;
+    /* position: sticky */
+    /* margin-right: 15px ; */
     /* right: 0px; */
     /* pointer-events: painted; */
     
 }
 
+/* button:hover:focus:active ?? */
+
 button:hover {
     outline: none;
-    transform: scale(1.5)
+    transform: scale(3.5)
 }
+
 
 
 
@@ -90,7 +97,7 @@ button:hover {
     width: 300px;
     border-radius: 0px;
     background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    /* border-bottom: 1px solid rgba(255, 255, 255, .5); */
     transition: all 1000ms 
 }
 
@@ -98,7 +105,7 @@ button:hover {
 .navlinks {
     display: flex;
     justify-content: space-around;
-    width: 30%
+    width: 30%;
 }
 
 .navlinks li{
@@ -111,12 +118,7 @@ button:hover {
 
 }
 
-.burger div{
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin: 5px;
-}
+
 
 /* .burger {
     display: none;
@@ -130,18 +132,24 @@ button:hover {
 
 .chart {
     margin-left: 10%;
-    margin-right: 10%;
-    height: 500px;
-    width: 600px;
+    margin-right: 1%;
+    height: 1000px;
+    width: 800px;
+
 }
 
 
 .stock-info {
-    font-size: large;
+    font-size: medium;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 0 3px black;
+    padding: 20px;
+    height: 300px;
 }
 
 .stock-info > ul {
     /* background-color: black; */
+    list-style-type: none;
+    font-size: small
 }
 

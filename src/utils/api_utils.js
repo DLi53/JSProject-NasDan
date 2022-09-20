@@ -13,6 +13,7 @@ export const getHistoricalData = (ticker,range='1month') => {
 }
 
 
+// (getTickerData("AAPL").then(data => {console.log(data);}));
 // 1. https://cloud.iexapis.com/stable
 // 2. /stock/${ticker}
 //       /stock/aapl/chart/1y
@@ -23,3 +24,5 @@ export const getHistoricalData = (ticker,range='1month') => {
 // ?symbol = AAPL & interval=5min & output=200
 
 // https://api.twelvedata.com/time_series?symbol=AAPL&interval=1month&apikey=b0258fd3199a4e6ea92790d4e7db7382
+
+// 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month"

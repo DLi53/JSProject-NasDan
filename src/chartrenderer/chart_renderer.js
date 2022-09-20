@@ -1,32 +1,61 @@
 import Chart from 'chart.js/auto';
 import StockInfo from "./stock_info";
 import { getTickerData, getHistoricalData } from "../utils/api_utils";
-// import { values } from 'core-js/core/array';
-// import ChartData from "./chart_data";
 
-// const chartdata = new ChartData("AAPL", "1m")
 
 const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
+    // 'January',
+    // 'February',
+    // 'March',
+    // 'April',
+    // 'May',
+    // 'June',
 
 ];
 
 const data = {
     labels: labels,
-    datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data:  [0, 10, 5, 2, 20, 30, 45,0],
-    }]
+    datasets: [{label:""}
+        // {
+        // label: 'My First dataset',
+        // backgroundColor: 'rgb(255, 26, 104, 0.2)', // dot color
+        // borderColor: 'rgb(255, 99, 132)', //line color
+        // data:  [0, 10, 5, 2, 20, 30, 45,0],
+        // }, {
+        // label: 'My Second dataset',
+        // backgroundColor: 'rgb(25, 9, 1)',
+        // borderColor: 'rgb(25, 99, 132)', 
+        // data: [12, 100, 50, 22, 0, 30, 3, 2],
+        // }
+    ]
 };
 
-const options = {}
+const options = {
+    interaction: {
+        intersect: false,
+        mode: 'index',
+    },
+    plugins: {
+        title: {
+            // display: true,
+            text: (ctx) => {
+                const { axis = 'xy', intersect, mode } = ctx.chart.options.interaction;
+                return 'Mode: ' + 'nearest' + ', axis: ' + 'xy' + ', intersect: ' + 'false';
+            }
+        },
+    },
+    // scales: {
+    //     x: {
+    //         display: true,
+    //     },
+    //     y: {
+    //         display: true,
+    //         type: 'logarithmic',
+    //         suggestedMin: 30,
+    //         suggestedMax: 50,
+    //     }
+    // }
+}
 
 const config = {
     type: 'line',
@@ -39,27 +68,33 @@ export default class ChartRenderer {
         this.searchBar = document.getElementById("search");
         this.inputElement = document.getElementById("search-input");
         this.searchbutton = document.getElementById("search-button")
+
+        this.weekbutton = document.getElementById("1w")
+        this.monthbutton = document.getElementById("1m")
+        this.sixmonthbutton = document.getElementById("6m")
+        this.yearbutton = document.getElementById("1y")
+
         this.chart = new Chart(
             document.getElementById('myChart'),
             config
         );
         this.stockInfo = new StockInfo();
-
+        
         this.searchBar.addEventListener("submit", e => {
             e.preventDefault();
 
             const ticker = this.inputElement.value;
             getTickerData(ticker).then(data => {
                 this.updateData(data);
-                console.log('this works');
+                // console.log('this works');
             }).catch(() => {
                 console.log("Bad ticker bro");
             })
 
             getHistoricalData(ticker).then(data => {
                 // this.updateData(data);
-                console.log('BROOOOO this works');
-                console.log(data);
+                // console.log('BROOOOO this works');
+                // console.log(data);
                 this.updateChart(data.data)
             }).catch(() => {
                 console.log("BROOO Bad ticker bro");
@@ -73,62 +108,144 @@ export default class ChartRenderer {
 
             getTickerData(ticker).then(data => {
                 this.updateData(data);
-                console.log('this works');
+                // console.log('this works');
             }).catch(() => {
                 console.log("Bad ticker bro");
             })
 
             getHistoricalData(ticker).then(data => {
                 // this.updateData(data);
-                console.log('BROOOOO this works');
-                console.log(data);
+                // console.log('BROOOOO this works');
+                // console.log(data);
+                this.updateChart(data.data)
+
             }).catch(() => {
                 console.log("BROOO Bad ticker bro");
             })
 
 
         })
+
+
+        this.weekbutton.addEventListener("click", e => {
+            e.preventDefault();
+            const range = "1h"
+            const ticker = this.chart.config.data.datasets
+            this.clearChart()
+            ticker.forEach(object => {
+                const sym = object.label;
+                getHistoricalData(sym,range).then(data => {
+                    this.updateChart(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                })
+            })
+        }) 
+
+        this.monthbutton.addEventListener("click", e => {
+            e.preventDefault();
+            const range = "1day"
+            const ticker = this.chart.config.data.datasets
+            this.clearChart()
+            ticker.forEach(object => {
+                const sym = object.label;
+                getHistoricalData(sym, range).then(data => {
+                    this.updateChart(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                })
+            })
+        })
+
+        this.sixmonthbutton.addEventListener("click", e => {
+            e.preventDefault();
+            const range = "1week"
+            const ticker = this.chart.config.data.datasets
+            this.clearChart()
+            ticker.forEach(object => {
+                const sym = object.label;
+                getHistoricalData(sym, range).then(data => {
+                    this.updateChart(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                })
+            })
+        })
+
+        this.yearbutton.addEventListener("click", e => {
+            e.preventDefault();
+            const range = "1month"
+            const ticker = this.chart.config.data.datasets
+            this.clearChart()
+            ticker.forEach(object => {
+                const sym = object.label;
+                getHistoricalData(sym, range).then(data => {
+                    this.updateChart(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                })
+            })
+        })
     }
+
 
     updateData(data) {
         // console.log("updating chart...", data);
-        console.log(data)
+        // console.log(data)
         this.stockInfo.updateData(data.data.symbol, data.data.peRatio, data.data.volume, data.data.week52High, data.data.week52Low);
 
     }
 
     updateChart(data) {
-        console.log("updating chart...", data);
-        // console.log(this.chart)
+        // console.log("updating chart...", data);
+
         let sym = data.meta.symbol
-        
         let values = data.values
+        // borderColor: , //line color
+        // let colornum = Math.random()
+        let color1 = Math.floor((Math.random() * 255) )
+        let color2 = Math.floor((Math.random() * 255) )
+        let color3 = Math.floor((Math.random() * 255) )
+
+        // console.log(values);
         let dates = []
         let closes = []
 
-        console.log(sym);
-        console.log(values);
-
-
-
-
         values.forEach(ele => {
-            dates.push(ele.datetime)
+            dates.unshift(ele.datetime)
         })
         values.forEach(ele => {
-            closes.push(ele.close)
+            closes.unshift(ele.close)
         })
+
+        let pushdata = { 
+            label: sym, 
+            data: closes, 
+            borderColor: `rgb(${color1},${color2},${color3})`,
+            backgroundColor: `rgb(${color3},${color2},${color2})`
+        }
 
 
         this.chart.config.data.labels = dates
-        console.log(this.chart.config.data.labels);
+        // console.log(this.chart.config.data.labels);
 
-        this.chart.config.data.datasets[0].label = sym
-        this.chart.config.data.datasets[0].data = closes
+        // this.chart.config.data.datasets[0].label = sym
+        this.chart.config.data.datasets.push(pushdata)
+
+        // this.chart.config.data.datasets[0].data = closes
+        // this.chart.config.data.datasets.push({data: closes})
+
 
         this.chart.update();
-        console.log(chartLabels);
+        // console.log(chartLabels);
     }
+
+    clearChart() {
+        this.chart.config.data.labels = []
+        this.chart.config.data.datasets =[]
+
+    }
+
 
     addMACD() {
     }
