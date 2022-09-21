@@ -262,9 +262,9 @@ export default class ChartRenderer {
         let values = data.values
         // borderColor: , //line color
         // let colornum = Math.random()
-        let color1 = Math.floor((Math.random() * 255) )
-        let color2 = Math.floor((Math.random() * 255) )
-        let color3 = Math.floor((Math.random() * 255) )
+        let color1 = Math.floor((Math.random() * 255))
+        let color2 = Math.floor((Math.random() * 255))
+        let color3 = Math.floor((Math.random() * 255))
 
         // console.log(values);
         let dates = []

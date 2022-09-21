@@ -13,7 +13,7 @@ body {
         /* background-image: url("../../images/mountainbackground.png"); */
         /* background-image: url("https//github.com/DLi53/JS-Project/blob/main/images/MountainBackground.jpeg") */
         /* background-image: url("https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80") */
-        /* background-image: url("https://images.unsplash.com/photo-1573126617899-41f1dffb196c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80") */
+        /* background-image: url("https://images.unsplash.com/photo-1483354483454-4cd359948304?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80") */
     }
 
     @keyframes gradient {
@@ -167,13 +167,15 @@ li:hover {
     display: flex;
     justify-content: space-around;
     margin-inline: 10%;
+    flex-wrap: wrap;
 }
 
 .chart {
 
     margin-right: 3%; 
-    height: 500px;
-    width: 800px;
+    margin-bottom: 3%;
+    height: 100%;
+    width: 75%;
 }
 
 
@@ -182,7 +184,8 @@ li:hover {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-shadow: 0 0 3px black;
     padding: 20px;
-    height: 450px;
+    /* height: 450px; */
+    text-align: center;
 }
 
 
@@ -229,9 +232,21 @@ li:hover {
     background-color: #cce3ed;
     padding: 2%;
     border-radius: 25px;
+    margin-top: 5%;
 }
 
 .howTo>ul {
     list-style: none;
     text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    .topnav {
+        flex-wrap: wrap;
+        margin-inline: 7%;
+    }
+
+    .sidebar {
+        margin: 3%;
+    }
 }
