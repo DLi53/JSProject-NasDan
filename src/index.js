@@ -6,7 +6,7 @@ import ChartRenderer from './chartrenderer/chart_renderer';
 // make api call, store data
 // pass data to chart
 
-let graphData = undefined;
+// let graphData = undefined;
 
 document.addEventListener("DOMContentLoaded", function () {
     const chartRenderer = new ChartRenderer();

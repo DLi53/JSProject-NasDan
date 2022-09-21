@@ -65,6 +65,10 @@ const config = {
 
 export default class ChartRenderer {
     constructor() {
+        this.togglebutton = document.getElementById("toggle-graph")
+        this.clearbutton = document.getElementById("clear-graph")
+
+
         this.searchBar = document.getElementById("search");
         this.inputElement = document.getElementById("search-input");
         this.searchbutton = document.getElementById("search-button")
@@ -80,6 +84,17 @@ export default class ChartRenderer {
         );
         this.stockInfo = new StockInfo();
         
+        this.togglebutton.addEventListener("click", e => {
+            e.preventDefault();
+            this.togglegraph()
+        })
+
+        this.clearbutton.addEventListener("click", e => {
+            e.preventDefault();
+            this.cleargraph()
+        })
+
+
         this.searchBar.addEventListener("submit", e => {
             e.preventDefault();
 
@@ -130,12 +145,12 @@ export default class ChartRenderer {
         this.weekbutton.addEventListener("click", e => {
             e.preventDefault();
             const range = "1h"
-            const ticker = this.chart.config.data.datasets
-            this.clearChart()
-            ticker.forEach(object => {
+            const tickers = this.chart.config.data.datasets
+            // this.clearChart()
+            tickers.forEach(object => {
                 const sym = object.label;
                 getHistoricalData(sym,range).then(data => {
-                    this.updateChart(data.data)
+                    this.updatetime(data.data)
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
                 })
@@ -146,11 +161,11 @@ export default class ChartRenderer {
             e.preventDefault();
             const range = "1day"
             const ticker = this.chart.config.data.datasets
-            this.clearChart()
+            // this.clearChart()
             ticker.forEach(object => {
                 const sym = object.label;
                 getHistoricalData(sym, range).then(data => {
-                    this.updateChart(data.data)
+                    this.updatetime(data.data)
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
                 })
@@ -161,11 +176,11 @@ export default class ChartRenderer {
             e.preventDefault();
             const range = "1week"
             const ticker = this.chart.config.data.datasets
-            this.clearChart()
+            // this.clearChart()
             ticker.forEach(object => {
                 const sym = object.label;
                 getHistoricalData(sym, range).then(data => {
-                    this.updateChart(data.data)
+                    this.updatetime(data.data)
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
                 })
@@ -176,18 +191,30 @@ export default class ChartRenderer {
             e.preventDefault();
             const range = "1month"
             const ticker = this.chart.config.data.datasets
-            this.clearChart()
+            // this.clearChart()
             ticker.forEach(object => {
                 const sym = object.label;
                 getHistoricalData(sym, range).then(data => {
-                    this.updateChart(data.data)
+                    this.updatetime(data.data)
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
                 })
             })
         })
+
+        
     }
 
+    togglegraph(){
+        if (this.chart.config.type === 'line') {
+            this.chart.config.type = 'bar'
+        } else {
+            // console.log("im here")
+            this.chart.config.type = 'line'
+        }
+        this.chart.update();
+
+    }
 
     updateData(data) {
         // console.log("updating chart...", data);
@@ -240,12 +267,59 @@ export default class ChartRenderer {
         // console.log(chartLabels);
     }
 
-    clearChart() {
+    cleargraph() {
         this.chart.config.data.labels = []
         this.chart.config.data.datasets =[]
-
+        // { label: "" }
+        this.chart.update();
     }
 
+    updatetime(data) {
+        let sym = data.meta.symbol
+        let sets = this.chart.config.data.datasets
+        let symidx = 0
+        for (let i = 0; i < sets.length; i++) {
+            if (sets[i].label === sym) {symidx = i}
+        }
+        console.log(symidx);
+        let values = data.values
+        // borderColor: , //line color
+        // let colornum = Math.random()
+        // let color1 = Math.floor((Math.random() * 255))
+        // let color2 = Math.floor((Math.random() * 255))
+        // let color3 = Math.floor((Math.random() * 255))
+
+        // console.log(values);
+        let dates = []
+        let closes = []
+
+        values.forEach(ele => {
+            dates.unshift(ele.datetime)
+        })
+        values.forEach(ele => {
+            closes.unshift(ele.close)
+        })
+
+        let pushdata = {
+            label: sym,
+            data: closes,
+            // borderColor: `rgb(${color1},${color2},${color3})`,
+            // backgroundColor: `rgb(${color3},${color2},${color2})`
+        }
+
+
+        this.chart.config.data.labels = dates
+        // console.log(this.chart.config.data.labels);
+
+        // this.chart.config.data.datasets[0].label = sym
+        // this.chart.config.data.datasets.push(pushdata)
+
+        this.chart.config.data.datasets[symidx].data = closes
+        // this.chart.config.data.datasets.push({data: closes})
+
+
+        this.chart.update();
+    }
 
     addMACD() {
     }

@@ -31,7 +31,7 @@ body {
     /* border: 50px; */
     background-color: rgb(243, 243, 243);
     border-radius: 25px;
-    
+    position: sticky;
 
 }
 
@@ -39,8 +39,8 @@ body {
     letter-spacing: 10px;
     display: inline-block;
     font-size: 30px;
-    animation: flip 5s infinite;
-    animation-delay: calc(.4s * var(--i))
+    animation: flip 7s infinite;
+    animation-delay: calc(.5s * var(--i))
 }
 
 @keyframes flip {
@@ -79,6 +79,7 @@ button {
     border-color: rgb(92, 102, 244);
     padding:10px;
     box-shadow: 2px 1px;
+    opacity: 0.8;
     /* position: sticky */
     /* margin-right: 15px ; */
     /* right: 0px; */
@@ -90,7 +91,7 @@ button {
 
 button:hover {
     outline: none;
-    transform: scale(3.5)
+    transform: scale(2.5)
 }
 
 
@@ -136,18 +137,18 @@ button:hover {
 .chart {
     margin-left: 10%;
     margin-right: 1%;
-    height: 1000px;
+    height: 600px;
     width: 800px;
 
 }
 
 
-.stock-info {
+.sidebar {
     font-size: medium;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-shadow: 0 0 3px black;
     padding: 20px;
-    height: 300px;
+    height: 400px;
 }
 
 .stock-info > ul {
@@ -156,7 +157,21 @@ button:hover {
     font-size: small
 }
 
+.time-changes {
+    display: flex;
+    justify-content: space-around;
+}
 
+.rotatingbar {
+    opacity: 0.7;
+    position: sticky;
+    margin-bottom: 100px ;
+    top: 0;
+}
+
+.news {
+    opacity: 0.6
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

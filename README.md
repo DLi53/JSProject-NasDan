@@ -13,7 +13,7 @@ In Stonkers, users will be able to:
 -   Generate a 52 wk Average line
 
 
-![Alt Text](image.png)
+![Alt Text](images/image.png)
 
 
 # Implementation Timeline
