@@ -2,10 +2,11 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    
 }
 
 body {
-        background: linear-gradient(-45deg, #deed07, #edf3fced, #a8dff3, #faddf2);
+        background: linear-gradient(-45deg, #8ded07, #b7cff3ed, #a8dff3, #fadde2);
         background-size: 500% 500%;
         animation: gradient 15s ease infinite;
         /* height: 100vh; */
@@ -29,11 +30,12 @@ body {
     background-color: rgb(243, 243, 243);
     border-radius: 25px;
     position: sticky;
-
+    transition: all 0.3s ease;
 }
 
 .title span {
     letter-spacing: 10px;
+    
     display: inline-block;
     font-size: 30px;
     animation: flip 7s infinite;
@@ -48,7 +50,7 @@ body {
 
 .input-search {
     /* height: 20px; */
-    width: 150px;
+    width: 200px;
     border-style: none;
     padding: 10px;
     font-size: 14px;
@@ -69,12 +71,13 @@ body {
     font-size: 14px;
 }
 
+
 button {
-    background-color: #eaedfc;
+    background-color: #d1fbfa;
     border-radius: 50px ;
     cursor: pointer;
-    border-color: rgb(92, 102, 244);
-    padding:10px;
+    border-color: rgb(91, 174, 237);
+    padding:8px;
     box-shadow: 2px 1px;
     opacity: 0.8;
     /* position: sticky */
@@ -88,10 +91,28 @@ button {
 
 button:hover {
     outline: none;
-    transform: scale(2.5)
+    animation: swing 2s ease;
+    animation-iteration-count: 1;
 }
 
+button:active{
+  background: #21a8e2;
+  top: 2px;
+}
 
+li:hover {
+    animation: swing 2s ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes swing {
+    15% {transform: translateY(-5px);}
+    30% {transform: translateY(5px);}
+    50% {transform: translateY(-3px);}
+    65% {transform: translateY(3px);}
+    80% {transform: translateY(-2px);}
+    100% {transform: translateY(0);}
+}
 
 
 .input-search:focus {
@@ -145,8 +166,9 @@ button:hover {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-shadow: 0 0 3px black;
     padding: 20px;
-    height: 400px;
+    height: 450px;
 }
+
 
 .stock-info > ul {
     /* background-color: black; */
@@ -163,9 +185,23 @@ button:hover {
     opacity: 0.7;
     position: sticky;
     margin-bottom: 100px ;
-    top: 0;
+
 }
 
 .news {
-    opacity: 0.6
+    opacity: 0.7;
+    padding: 5%;
+
+}
+
+
+#citation {
+    display: flex;
+    justify-content: right;
+    margin-right: 60px;
+    margin-top: 5px;
+}
+
+.cover{
+    display: hidden;
 }

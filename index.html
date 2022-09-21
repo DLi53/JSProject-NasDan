@@ -10,7 +10,7 @@
     <!-- <link rel="reset-stylesheet" href="./src/styles/reset.scss" /> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    
+    <script src="https://kit.fontawesome.com/ba6705ca2d.js" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./dist/main.js"></script>
@@ -18,11 +18,12 @@
 </head>
 
 <body>
+
     <nav class="topnav">
             <h1 class ="title">
                 <span style ="--i:0"><img src="images/Pooh.webp" width="20" height="20"></span>
                 <span></span>
-                <span style ="--i:1"> N</span>
+                <span style ="--i:1">N</span>
                 <span style ="--i:2">A</span>
                 <span style ="--i:3">S</span>
                 <span style ="--i:4">D</span>
@@ -35,14 +36,14 @@
 
 
             <form action="" id = "search">
-                <input id="search-input" type="text" class="input-search" placeholder="Search Stock... ">
-                <button type = "button" class="search-button" id = "search-button">🔍</button>
+                <input id="search-input" type="text" class="input-search" placeholder="Search Stock Ticker... ">
+                <button type = "button" class="search-button" id = "search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
             <ul class="navlinks">
-                <li><a href="https://www.homedepot.com/">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a id ="icons" href="https://www.homedepot.com/"><i class="fa-solid fa-house"></i></a></li>
+                <li><a id ="icons" href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a id ="icons" href="#"><i class="fa-brands fa-github"></i></a></li>
             </ul>
     </nav>
 
@@ -52,16 +53,17 @@
             <canvas id="myChart"></canvas>
             <br>
             <div class ="time-changes">
-                <button id="1w">1 Week</button>
-                <button id="1m">1 Month and a Half</button>
-                <button id="6m">6 Months</button>
-                <button id="1y">3 Years and a Half!</button>
+                <button id="1w">1W</button>
+                <button id="1m">1M</button>
+                <button id="6m">6M</button>
+                <button id="1y">3Y</button>
             </div>
         </div>
+
         <div class = 'sidebar'>
             <div class = stock-info id="stock-info">
                 <div class="stock-info-head">
-                    <h2>Stock Info</h2>
+                    <h2>Stock Info <i class="fa-solid fa-arrow-trend-up"></i></h2>
                     <br>
                 </div>
             </div>
@@ -78,15 +80,20 @@
             <br>
 
         </div>
+
     </div>
 
 <div class = 'news'>
-<rssapp-imageboard id="B4IS4boqMe2VmiWu"></rssapp-imageboard>
-<script src="https://widget.rss.app/v1/imageboard.js" type="text/javascript" async></script>
+<rssapp-carousel id="B4IS4boqMe2VmiWu"></rssapp-carousel>
+<script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+<h5 id="citation">code from rss.app <i class="fa-solid fa-copyright"></i></h5>
 </div>
+
+
 <br>
 <br>
 <div class="rotatingbar">
+    
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
         {
                 "symbols": [
@@ -108,6 +115,11 @@
                 "locale": "en"
             }
     </script>
+    <div class="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/markets/" rel="noopener"target="_blank">
+            <span class="blue-text">Markets</span>
+        </a> by TradingView
+    </div>
 </div>
 
 </body>

@@ -14,7 +14,9 @@ export default class StockInfo {
 
         for (const label of dataLabels()) {
             const labelElement = document.createElement("li");
+            // const br = document.createElement('br')
             labelElement.innerHTML = label;
+            // labelElement.appendChild(br)
             this.dataList.appendChild(labelElement);
         }
         this.stockInfo.appendChild(this.dataList);

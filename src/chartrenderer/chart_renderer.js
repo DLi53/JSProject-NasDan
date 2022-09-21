@@ -322,6 +322,8 @@ export default class ChartRenderer {
     }
 
     addMACD() {
+        this.chart.config.data.datasets = []
+
     }
     applyLogScale() {
     }
