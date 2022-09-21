@@ -2,14 +2,16 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    
+
 }
 
 body {
-        background: linear-gradient(-45deg, #8ded07, #b7cff3ed, #a8dff3, #fadde2);
-        background-size: 500% 500%;
-        animation: gradient 15s ease infinite;
+        background: linear-gradient(-45deg, #8ded07, #96b7e9ed, #a8dff3, #f56c83);
+        background-size: 150% 100%; 
+        animation: gradient 50s ease infinite;
         /* height: 100vh; */
+        background-image: url("../../images/MountainBackground.jpeg");
+        
     }
 
     @keyframes gradient {
@@ -37,6 +39,7 @@ body {
     letter-spacing: 10px;
     
     display: inline-block;
+
     font-size: 30px;
     animation: flip 7s infinite;
     animation-delay: calc(.5s * var(--i))
@@ -185,7 +188,8 @@ li:hover {
     opacity: 0.7;
     position: sticky;
     margin-bottom: 100px ;
-
+    position: sticky;
+    bottom: 0;
 }
 
 .news {
