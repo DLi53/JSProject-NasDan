@@ -104,13 +104,17 @@ export default class ChartRenderer {
             this.chart.config.data.datasets.forEach(ele => {
                 labels.push(ele.label)
             })
+            this.inputElement.id = "search-input"
             if (!labels.includes(ticker.toUpperCase())) {
             
                 getTickerData(ticker).then(data => {
                     this.updateData(data);
+                    this.inputElement.placeholder = "Search Stock Ticker...";
                     // console.log('this works');
                 }).catch(() => {
                     console.log("Bad ticker bro");
+                    console.log(this.inputElement.id = "shake");
+                    this.inputElement.placeholder = "Invalid Ticker";
                 })
 
                 getHistoricalData(ticker).then(data => {
@@ -118,14 +122,17 @@ export default class ChartRenderer {
                     // console.log('BROOOOO this works');
                     // console.log(data);
                     this.updateChart(data.data)
+                    this.inputElement.placeholder = "Search Stock Ticker...";
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
+                    this.inputElement.placeholder = "Invalid Ticker";
                     console.log(this.inputElement.id = "shake");
                 })
             } else {
-
-                console.log(this.inputElement.id = "shake");
+                this.inputElement.id = "shake";
+                this.inputElement.placeholder = "Already Searched";
             }
+
         })
 
         this.searchbutton.addEventListener("click", e => {
@@ -137,13 +144,18 @@ export default class ChartRenderer {
             this.chart.config.data.datasets.forEach(ele => {
                 labels.push(ele.label)
             })
+            this.inputElement.id = "search-input"
+
             if (!labels.includes(ticker.toUpperCase())) {
 
                 getTickerData(ticker).then(data => {
                     this.updateData(data);
                     // console.log('this works');
+                    this.inputElement.placeholder = "Search Stock Ticker...";
+
                 }).catch(() => {
                     console.log("Bad ticker bro");
+                    this.inputElement.placeholder = "Invalid Ticker";
                 })
 
                 getHistoricalData(ticker).then(data => {
@@ -155,13 +167,13 @@ export default class ChartRenderer {
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
                     console.log(this.inputElement.id = "shake");
-
                 })
 
             } else {
                 console.log(this.inputElement.id = "shake");
 
             }
+            this.inputElement.id = "search-input"
         })
 
 
