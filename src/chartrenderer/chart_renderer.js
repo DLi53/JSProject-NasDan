@@ -64,6 +64,7 @@ export default class ChartRenderer {
     constructor() {
         this.togglebutton = document.getElementById("toggle-graph")
         this.clearbutton = document.getElementById("clear-graph")
+        this.macdbutton = document.getElementById("macd")
 
 
         this.searchBar = document.getElementById("search");
@@ -234,6 +235,10 @@ export default class ChartRenderer {
             })
         })
 
+        this.macdbutton.addEventListener("click", e => {
+            e.preventDefault();
+            this.addMACD();
+        })
         
     }
 
@@ -355,7 +360,7 @@ export default class ChartRenderer {
 
     addMACD() {
         this.chart.config.data.datasets = []
-
+        console.log('macd');
     }
     applyLogScale() {
     }
