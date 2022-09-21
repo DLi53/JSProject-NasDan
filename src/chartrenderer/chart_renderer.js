@@ -98,22 +98,34 @@ export default class ChartRenderer {
         this.searchBar.addEventListener("submit", e => {
             e.preventDefault();
 
-            const ticker = this.inputElement.value;
-            getTickerData(ticker).then(data => {
-                this.updateData(data);
-                // console.log('this works');
-            }).catch(() => {
-                console.log("Bad ticker bro");
-            })
 
-            getHistoricalData(ticker).then(data => {
-                // this.updateData(data);
-                // console.log('BROOOOO this works');
-                // console.log(data);
-                this.updateChart(data.data)
-            }).catch(() => {
-                console.log("BROOO Bad ticker bro");
+            const ticker = this.inputElement.value;
+            let labels = []
+            this.chart.config.data.datasets.forEach(ele => {
+                labels.push(ele.label)
             })
+            if (!labels.includes(ticker.toUpperCase())) {
+            
+                getTickerData(ticker).then(data => {
+                    this.updateData(data);
+                    // console.log('this works');
+                }).catch(() => {
+                    console.log("Bad ticker bro");
+                })
+
+                getHistoricalData(ticker).then(data => {
+                    // this.updateData(data);
+                    // console.log('BROOOOO this works');
+                    // console.log(data);
+                    this.updateChart(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                    console.log(this.inputElement.id = "shake");
+                })
+            } else {
+
+                console.log(this.inputElement.id = "shake");
+            }
         })
 
         this.searchbutton.addEventListener("click", e => {
@@ -121,24 +133,35 @@ export default class ChartRenderer {
 
             const ticker = this.inputElement.value;
 
-            getTickerData(ticker).then(data => {
-                this.updateData(data);
-                // console.log('this works');
-            }).catch(() => {
-                console.log("Bad ticker bro");
+            let labels = []
+            this.chart.config.data.datasets.forEach(ele => {
+                labels.push(ele.label)
             })
+            if (!labels.includes(ticker.toUpperCase())) {
 
-            getHistoricalData(ticker).then(data => {
-                // this.updateData(data);
-                // console.log('BROOOOO this works');
-                // console.log(data);
-                this.updateChart(data.data)
+                getTickerData(ticker).then(data => {
+                    this.updateData(data);
+                    // console.log('this works');
+                }).catch(() => {
+                    console.log("Bad ticker bro");
+                })
 
-            }).catch(() => {
-                console.log("BROOO Bad ticker bro");
-            })
+                getHistoricalData(ticker).then(data => {
+                    // this.updateData(data);
+                    // console.log('BROOOOO this works');
+                    // console.log(data);
+                    this.updateChart(data.data)
 
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                    console.log(this.inputElement.id = "shake");
 
+                })
+
+            } else {
+                console.log(this.inputElement.id = "shake");
+
+            }
         })
 
 
