@@ -15,17 +15,12 @@ const labels = [
 
 const data = {
     labels: labels,
-    datasets: [{label:""}
+    datasets: [ {label:""}
         // {
-        // label: 'My First dataset',
-        // backgroundColor: 'rgb(255, 26, 104, 0.2)', // dot color
-        // borderColor: 'rgb(255, 99, 132)', //line color
+        // label: 'Stock Ticker',
+        // backgroundColor: 'rgb(31, 97, 140, 0.2)', // dot color
+        // borderColor: 'rgb(88, 214, 142)', //line color
         // data:  [0, 10, 5, 2, 20, 30, 45,0],
-        // }, {
-        // label: 'My Second dataset',
-        // backgroundColor: 'rgb(25, 9, 1)',
-        // borderColor: 'rgb(25, 99, 132)', 
-        // data: [12, 100, 50, 22, 0, 30, 3, 2],
         // }
     ]
 };
@@ -35,12 +30,14 @@ const options = {
         intersect: false,
         mode: 'index',
     },
+    responsive: true,
     plugins: {
         title: {
             // display: true,
             text: (ctx) => {
                 const { axis = 'xy', intersect, mode } = ctx.chart.options.interaction;
                 return 'Mode: ' + 'nearest' + ', axis: ' + 'xy' + ', intersect: ' + 'false';
+                
             }
         },
     },

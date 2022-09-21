@@ -13,8 +13,10 @@ body {
         background-size: 150% 100%; 
         animation: gradient 50s ease infinite;
         /* height: 100vh; */
-        background-image: url("../../images/MountainBackground.jpeg");
-        
+        background-image: url("../../images/mountainbackground.png");
+        /* background-image: url("https//github.com/DLi53/JS-Project/blob/main/images/MountainBackground.jpeg") */
+        /* background-image: url("https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80") */
+        /* background-image: url("https://images.unsplash.com/photo-1573126617899-41f1dffb196c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80") */
     }
 
     @keyframes gradient {
