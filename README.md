@@ -1,12 +1,13 @@
 # JS-Project
 
+ezgif.com-gif-maker.gif
+
 # Background
 
 [NasDan](https://dli53.github.io/JS-Project/) is a data visualization/interactive demonstration that will show the historical data of a stock. User will be able to compare 2 stocks within the same time frame. User will also be able to generate a moving average line to see whether the current price of the stock is above or below a 5 day moving average.
 
 # Features and Instructions
 
-![](./images/NasDanTitle.mov)
 
 To visualize the data please follow these steps:
 1. Type in a Stock Ticker Symbol in the navigation search bar and hit enter.
