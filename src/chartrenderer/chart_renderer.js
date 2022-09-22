@@ -51,7 +51,7 @@ const options = {
             }
         },
         y: {
-            // display: true,
+            display: true,
             // type: 'logarithmic',
             // suggestedMin: 30,
             // suggestedMax: 50,
@@ -261,12 +261,12 @@ export default class ChartRenderer {
     updateData(data) {
         // console.log("updating chart...", data);
         // console.log(data)
-        this.stockInfo.updateData(data.data.symbol, data.data.peRatio, data.data.volume, data.data.week52High, data.data.week52Low);
+        this.stockInfo.updateData(data.data.symbol, data.data.peRatio, data.data.avgTotalVolume, data.data.week52High, data.data.week52Low, data.data.latestPrice);
 
     }
 
     updateChart(data) {
-        console.log("updating chart...", data);
+        // console.log("updating chart...", data);
 
         let sym = data.meta.symbol
         let values = data.values
@@ -378,12 +378,12 @@ export default class ChartRenderer {
                 let sumsum = 0
                 let sum = olddata.slice(i,i+5)
                 sum.forEach((e) =>{ sumsum += parseFloat(e) })
-                console.log(sumsum);
+                // console.log(sumsum);
                 // console.log(sum);
                 let avg = sumsum/sum.length
                 macdArr.push(avg)
-                console.log(avg);
-                console.log(macdArr);
+                // console.log(avg);
+                // console.log(macdArr);
             }
             // console.log(macdArr);
             let pushdata = {
@@ -400,6 +400,7 @@ export default class ChartRenderer {
     }
 
     applyLogScale() {
+        this.chart.config.options.scales.y.type = "logarithmic" 
     }
 }
 

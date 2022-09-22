@@ -1,10 +1,11 @@
-const dataLabels = (symbol ='Stock Ticker',peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") =>  {
+const dataLabels = (symbol ='Stock Ticker',peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0", cp = "0") =>  {
     return [
         `Ticker : ${symbol}`,
         `PE Ratios : ${peRatio}`,
         `Avg Volume : ${avgvolume}`,
         `52 Week High : ${wkhigh52}`,
-        `52 Week Low : ${wklow52}`
+        `52 Week Low : ${wklow52}`,
+        `Current Price : ${cp}`
     ]}
 
 export default class StockInfo {
@@ -23,7 +24,7 @@ export default class StockInfo {
 
     }
 
-    updateData(symbol = "Stock Ticker", peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0") {
+    updateData(symbol = "Stock Ticker", peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0", cp = "0") {
         console.log("stockInfo updating...");
         // dataLabels = dataLabels(data)
 
@@ -35,7 +36,7 @@ export default class StockInfo {
             disdataList.removeChild(disdataList.firstChild)
         }
 
-        for (const label of dataLabels(symbol,peRatio, avgvolume, wkhigh52, wklow52)) {
+        for (const label of dataLabels(symbol,peRatio, avgvolume, wkhigh52, wklow52, cp)) {
             const labelElement = document.createElement("li");
             labelElement.innerHTML = label;
             disdataList.appendChild(labelElement);
