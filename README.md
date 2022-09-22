@@ -1,5 +1,5 @@
 <p align ="center">
-  <img width="200" height="100" src="images/ezgif.com-gif-maker.gif">
+  <img width="300" height="100" src="images/ezgif.com-gif-maker.gif">
 </p>
 
 # Background
