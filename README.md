@@ -6,7 +6,7 @@
 
 # Features and Instructions
 
-
+![](./images/NasDanTitle.mov)
 
 To visualize the data please follow these steps:
 1. Type in a Stock Ticker Symbol in the navigation search bar and hit enter.
