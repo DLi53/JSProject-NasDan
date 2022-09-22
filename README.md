@@ -17,7 +17,7 @@ To visualize the data please follow these steps:
 5. To generate a moving average line, click "MACD"
 
 
-![](link here.gif)
+![](images/instructions.gif)
 
 # Technologies, Libraries, and API's
 

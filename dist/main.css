@@ -152,7 +152,7 @@ li:hover {
 .navlinks {
     display: flex;
     justify-content: space-around;
-    padding-left: 10%;
+    /* padding-left: 10%; */
     width: 30%;
 }
 
@@ -170,7 +170,7 @@ li:hover {
     display: flex;
     justify-content: space-around;
     margin-inline: 10%;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .chart {
@@ -251,6 +251,17 @@ li:hover {
 
     .sidebar {
         margin: 3%;
+        flex-wrap: wrap;
+    }
+
+}
+@media only screen and (max-width: 750px) {
+    .mid-section{
+        flex-wrap: wrap;
+    }
+    .chart {
+        height: 100%;
+        width: 110%
     }
 }
 /*!*************************************************************************************************************************************!*\
