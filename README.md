@@ -7,9 +7,6 @@
 # Features and Instructions
 
 
-
-https://user-images.githubusercontent.com/106249295/191770072-3c35832d-03b6-4564-89d1-c5f6eb2d1a2a.mov
-
 To visualize the data please follow these steps:
 1. Type in a Stock Ticker Symbol in the navigation search bar and hit enter.
 2. The chart will render the historical prices on the chart and Stock Information on the sidebar.
