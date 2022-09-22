@@ -41,18 +41,22 @@ const options = {
                 
             }
         },
+       
     },
-    // scales: {
-    //     x: {
-    //         display: true,
-    //     },
-    //     y: {
-    //         display: true,
-    //         type: 'logarithmic',
-    //         suggestedMin: 30,
-    //         suggestedMax: 50,
-    //     }
-    // }
+    scales: {
+        x: {
+            // display: true,
+            ticks: {
+                maxTicksLimit: 7
+            }
+        },
+        y: {
+            // display: true,
+            // type: 'logarithmic',
+            // suggestedMin: 30,
+            // suggestedMax: 50,
+        }
+    }
 }
 
 const config = {
@@ -361,35 +365,38 @@ export default class ChartRenderer {
 
     addMACD() {
         let dataset = this.chart.config.data.datasets
-        let olddata = dataset[dataset.length-1].data
-        let firstsum = 0
-        for(let j =0; j <5; j++) {firstsum += parseFloat(olddata[j])}
-        let avgfirstsum = firstsum/5
-        let macdArr = []
-        for (let k = 0; k < 5; k++) {macdArr.push(avgfirstsum)}
+        if (dataset[dataset.length-1].label !== "MACD") {
 
-        for (let i=0; i< olddata.length; i++) {
-            let sumsum = 0
-            let sum = olddata.slice(i,i+5)
-            sum.forEach((e) =>{ sumsum += parseFloat(e) })
-            console.log(sumsum);
-            // console.log(sum);
-            let avg = sumsum/sum.length
-            macdArr.push(avg)
-            console.log(avg);
-            console.log(macdArr);
-        }
-        // console.log(macdArr);
-        let pushdata = {
-            label: "MACD",
-            data: macdArr,
-            borderColor: `rgb(255,255,255)`,
-            backgroundColor: `rgb(255,255,255)`
-        }
+            let olddata = dataset[dataset.length-1].data
+            let firstsum = 0
+            for(let j =0; j <5; j++) {firstsum += parseFloat(olddata[j])}
+            let avgfirstsum = firstsum/5
+            let macdArr = []
+            for (let k = 0; k < 5; k++) {macdArr.push(avgfirstsum)}
 
-        console.log(pushdata)
-        this.chart.config.data.datasets.push(pushdata)
-        this.chart.update()
+            for (let i=0; i< olddata.length; i++) {
+                let sumsum = 0
+                let sum = olddata.slice(i,i+5)
+                sum.forEach((e) =>{ sumsum += parseFloat(e) })
+                console.log(sumsum);
+                // console.log(sum);
+                let avg = sumsum/sum.length
+                macdArr.push(avg)
+                console.log(avg);
+                console.log(macdArr);
+            }
+            // console.log(macdArr);
+            let pushdata = {
+                label: "MACD",
+                data: macdArr,
+                borderColor: `rgb(255,255,255)`,
+                backgroundColor: `rgb(255,255,255)`
+            }
+
+            console.log(pushdata)
+            this.chart.config.data.datasets.push(pushdata)
+            this.chart.update()
+        }
     }
 
     applyLogScale() {
