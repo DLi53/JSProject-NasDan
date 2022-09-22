@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import StockInfo from "./stock_info";
-import { getTickerData, getHistoricalData } from "../utils/api_utils";
+import { getTickerData, getHistoricalData, yahooData } from "../utils/api_utils";
 
 
 const labels = [
@@ -80,6 +80,10 @@ export default class ChartRenderer {
         this.monthbutton = document.getElementById("1m")
         this.sixmonthbutton = document.getElementById("6m")
         this.yearbutton = document.getElementById("1y")
+        this.fiveyearbutton = document.getElementById("5y")
+
+        this.maxbutton = document.getElementById("max")
+
 
         this.chart = new Chart(
             document.getElementById('myChart'),
@@ -120,6 +124,7 @@ export default class ChartRenderer {
                     this.inputElement.placeholder = "Invalid Ticker";
                 })
 
+                // yahooData(ticker).then(data => {
                 getHistoricalData(ticker).then(data => {
                     // this.updateData(data);
                     // console.log('BROOOOO this works');
@@ -129,7 +134,7 @@ export default class ChartRenderer {
                 }).catch(() => {
                     console.log("BROOO Bad ticker bro");
                     this.inputElement.placeholder = "Invalid Ticker";
-                    console.log(this.inputElement.id = "shake");
+                    // console.log(this.inputElement.id = "shake");
                 })
             } else {
                 this.inputElement.id = "shake";
@@ -182,11 +187,12 @@ export default class ChartRenderer {
 
         this.weekbutton.addEventListener("click", e => {
             e.preventDefault();
-            const range = "1h"
+            const range = "5d"
             const tickers = this.chart.config.data.datasets
             // this.clearChart()
             tickers.forEach(object => {
                 const sym = object.label;
+                // console.log(sym);
                 getHistoricalData(sym,range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
@@ -197,7 +203,7 @@ export default class ChartRenderer {
 
         this.monthbutton.addEventListener("click", e => {
             e.preventDefault();
-            const range = "1day"
+            const range = "1m"
             const ticker = this.chart.config.data.datasets
             // this.clearChart()
             ticker.forEach(object => {
@@ -212,7 +218,7 @@ export default class ChartRenderer {
 
         this.sixmonthbutton.addEventListener("click", e => {
             e.preventDefault();
-            const range = "1week"
+            const range = "6m"
             const ticker = this.chart.config.data.datasets
             // this.clearChart()
             ticker.forEach(object => {
@@ -227,7 +233,37 @@ export default class ChartRenderer {
 
         this.yearbutton.addEventListener("click", e => {
             e.preventDefault();
-            const range = "1month"
+            const range = "1y"
+            const ticker = this.chart.config.data.datasets
+            // this.clearChart()
+            ticker.forEach(object => {
+                const sym = object.label;
+                getHistoricalData(sym, range).then(data => {
+                    this.updatetime(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                })
+            })
+        })
+
+        this.fiveyearbutton.addEventListener("click", e => {
+            e.preventDefault();
+            const range = "5y"
+            const ticker = this.chart.config.data.datasets
+            // this.clearChart()
+            ticker.forEach(object => {
+                const sym = object.label;
+                getHistoricalData(sym, range).then(data => {
+                    this.updatetime(data.data)
+                }).catch(() => {
+                    console.log("BROOO Bad ticker bro");
+                })
+            })
+        })
+
+        this.maxbutton.addEventListener("click", e => {
+            e.preventDefault();
+            const range = "max"
             const ticker = this.chart.config.data.datasets
             // this.clearChart()
             ticker.forEach(object => {
@@ -267,9 +303,14 @@ export default class ChartRenderer {
 
     updateChart(data) {
         // console.log("updating chart...", data);
+        // console.log(data);
+        // let sym = data.meta.symbol
+        // let values = data.values
 
-        let sym = data.meta.symbol
-        let values = data.values
+        //iexcloud
+        let sym = data[0].symbol
+        // console.log(sym);
+
         // borderColor: , //line color
         // let colornum = Math.random()
         let color1 = Math.floor((Math.random() * 255)-50)
@@ -280,12 +321,22 @@ export default class ChartRenderer {
         let dates = []
         let closes = []
 
-        values.forEach(ele => {
-            dates.unshift(ele.datetime)
+        // values.forEach(ele => {
+        //     dates.unshift(ele.datetime)
+        // })
+        // values.forEach(ele => {
+        //     closes.unshift(ele.close)
+        // })
+
+        data.forEach(ele => {
+            dates.unshift(ele.label)
         })
-        values.forEach(ele => {
+        data.forEach(ele => {
             closes.unshift(ele.close)
         })
+
+        // console.log(dates);
+        // console.log(closes);
 
         let pushdata = { 
             label: sym, 
@@ -317,14 +368,17 @@ export default class ChartRenderer {
     }
 
     updatetime(data) {
-        let sym = data.meta.symbol
+        // console.log(data);
+        let sym = data[0].symbol
         let sets = this.chart.config.data.datasets
         let symidx = 0
         for (let i = 0; i < sets.length; i++) {
             if (sets[i].label === sym) {symidx = i}
         }
         // console.log(symidx);
-        let values = data.values
+        // console.log(symidx);
+        // let values = data.values
+
         // borderColor: , //line color
         // let colornum = Math.random()
         // let color1 = Math.floor((Math.random() * 255))
@@ -335,11 +389,11 @@ export default class ChartRenderer {
         let dates = []
         let closes = []
 
-        values.forEach(ele => {
-            dates.unshift(ele.datetime)
+        data.forEach(ele => {
+            dates.push(ele.label)
         })
-        values.forEach(ele => {
-            closes.unshift(ele.close)
+        data.forEach(ele => {
+            closes.push(ele.close)
         })
 
         let pushdata = {
@@ -365,18 +419,25 @@ export default class ChartRenderer {
 
     addMACD() {
         let dataset = this.chart.config.data.datasets
-        if (dataset[dataset.length-1].label !== "MACD") {
+        if (dataset[dataset.length - 1].label !== "MACD" && dataset[dataset.length - 1].label !== "") {
 
             let olddata = dataset[dataset.length-1].data
+            let ll = Math.ceil(olddata.length/10)
+            // console.log(olddata);
+            console.log(ll)
             let firstsum = 0
-            for(let j =0; j <5; j++) {firstsum += parseFloat(olddata[j])}
-            let avgfirstsum = firstsum/5
+            for(let j =0; j <ll; j++) {
+                firstsum += parseFloat(olddata[j])
+            console.log(firstsum);}
+            let avgfirstsum = firstsum/ll
+            console.log(avgfirstsum);
             let macdArr = []
-            for (let k = 0; k < 5; k++) {macdArr.push(avgfirstsum)}
+            for (let k = 0; k < ll; k++) {macdArr.push(avgfirstsum)}
+            console.log(macdArr);
 
             for (let i=0; i< olddata.length; i++) {
                 let sumsum = 0
-                let sum = olddata.slice(i,i+5)
+                let sum = olddata.slice(i,i+ll)
                 sum.forEach((e) =>{ sumsum += parseFloat(e) })
                 // console.log(sumsum);
                 // console.log(sum);
@@ -397,6 +458,8 @@ export default class ChartRenderer {
             this.chart.config.data.datasets.push(pushdata)
             this.chart.update()
         }
+
+        
     }
 
     applyLogScale() {

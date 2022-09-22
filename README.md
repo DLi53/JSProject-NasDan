@@ -41,8 +41,9 @@ To visualize the data please follow these steps:
 
 
 # Implementation Timeline
--   Friday: Research, Set up project, and plan out the design.
--   Weekend : Implement Dynamic API data fetching and bringing in animations with D3.JS
--   Monday : Continue with working with API and D3.JS
+-   Friday: Research, Set up project, and Plan out the design.
+-   Weekend : Implement Dynamic API data fetching and Chart.js
+-   Monday : Continue with working with API and Chart.JS
 -   Tuesday : Style up the website
--   Wednesday : Finishing touch up and making sure everything runs smoothly
+-   Wednesday : Add Bonus Features
+-   Thursday : Finishing touch up and making sure everything runs smoothly
