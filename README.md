@@ -6,7 +6,9 @@
 
 # Features and Instructions
 
-![](./images/NasDanTitle.mov)
+
+
+https://user-images.githubusercontent.com/106249295/191770072-3c35832d-03b6-4564-89d1-c5f6eb2d1a2a.mov
 
 To visualize the data please follow these steps:
 1. Type in a Stock Ticker Symbol in the navigation search bar and hit enter.
@@ -14,6 +16,7 @@ To visualize the data please follow these steps:
 3. To search and compare 2 stocks, enter in another stock ticker.
 4. To view the graph within a certain time frame, click one of these buttons ("1 Week", "1 Month", "6 Months", "3 Years").
 5. To generate a moving average line, click "MACD"
+
 
 
 
