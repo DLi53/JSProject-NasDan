@@ -163,6 +163,7 @@ export default class ChartRenderer {
 
                 }).catch(() => {
                     console.log("Bad ticker bro");
+                    this.inputElement.id = "shake"
                     this.inputElement.placeholder = "Invalid Ticker";
                 })
 
