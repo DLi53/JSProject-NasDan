@@ -10,12 +10,13 @@ const labels = [
     // 'April',
     // 'May',
     // 'June',
+    // 'July',
 
 ];
 
 const data = {
     labels: labels,
-    datasets: [ {label:""}
+    datasets: [ {label:""},
         // {
         // label: 'Stock Ticker',
         // backgroundColor: 'rgb(31, 97, 140, 0.2)', // dot color
@@ -261,14 +262,14 @@ export default class ChartRenderer {
     }
 
     updateChart(data) {
-        // console.log("updating chart...", data);
+        console.log("updating chart...", data);
 
         let sym = data.meta.symbol
         let values = data.values
         // borderColor: , //line color
         // let colornum = Math.random()
-        let color1 = Math.floor((Math.random() * 255))
-        let color2 = Math.floor((Math.random() * 255))
+        let color1 = Math.floor((Math.random() * 255)-50)
+        let color2 = Math.floor((Math.random() * 255)-50)
         let color3 = Math.floor((Math.random() * 255))
 
         // console.log(values);
@@ -318,7 +319,7 @@ export default class ChartRenderer {
         for (let i = 0; i < sets.length; i++) {
             if (sets[i].label === sym) {symidx = i}
         }
-        console.log(symidx);
+        // console.log(symidx);
         let values = data.values
         // borderColor: , //line color
         // let colornum = Math.random()
@@ -359,9 +360,38 @@ export default class ChartRenderer {
     }
 
     addMACD() {
-        this.chart.config.data.datasets = []
-        console.log('macd');
+        let dataset = this.chart.config.data.datasets
+        let olddata = dataset[dataset.length-1].data
+        let firstsum = 0
+        for(let j =0; j <5; j++) {firstsum += parseFloat(olddata[j])}
+        let avgfirstsum = firstsum/5
+        let macdArr = []
+        for (let k = 0; k < 5; k++) {macdArr.push(avgfirstsum)}
+
+        for (let i=0; i< olddata.length; i++) {
+            let sumsum = 0
+            let sum = olddata.slice(i,i+5)
+            sum.forEach((e) =>{ sumsum += parseFloat(e) })
+            console.log(sumsum);
+            // console.log(sum);
+            let avg = sumsum/sum.length
+            macdArr.push(avg)
+            console.log(avg);
+            console.log(macdArr);
+        }
+        // console.log(macdArr);
+        let pushdata = {
+            label: "MACD",
+            data: macdArr,
+            borderColor: `rgb(255,255,255)`,
+            backgroundColor: `rgb(255,255,255)`
+        }
+
+        console.log(pushdata)
+        this.chart.config.data.datasets.push(pushdata)
+        this.chart.update()
     }
+
     applyLogScale() {
     }
 }
@@ -376,3 +406,4 @@ export default class ChartRenderer {
 //     arr1.push(element.datetime)
 //     arr2.push(element.close)
 // });
+
