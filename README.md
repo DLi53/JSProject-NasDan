@@ -1,6 +1,6 @@
 # JS-Project
 
-ezgif.com-gif-maker.gif
+![](images/ezgif.com-gif-maker.gif)
 
 # Background
 
