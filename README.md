@@ -1,6 +1,6 @@
-# JS-Project
-
-![](images/ezgif.com-gif-maker.gif)
+<p align ="center">
+  <img width="550" height="300" src="images/ezgif.com-gif-maker.gif">
+</p>
 
 # Background
 
@@ -17,7 +17,7 @@ To visualize the data please follow these steps:
 5. To generate a moving average line, click "MACD"
 
 
-
+![](link here.gif)
 
 # Technologies, Libraries, and API's
 
