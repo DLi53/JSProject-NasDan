@@ -1,14 +1,19 @@
 import axios from 'axios';
 
+const token = `sk_a618e14a285e467fa973af590a42a321`
+
 export const getTickerData = (ticker) => {
     return Promise.resolve(
-        axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=sk_3d2eb0ffc27c4c3bbfb0a159f4a0112d`)
+        axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${token}`)
+        // axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=sk_3d2eb0ffc27c4c3bbfb0a159f4a0112d`)
+
     );
 }
 
 export const getHistoricalData = (ticker,range='1m') => {
     return Promise.resolve(
-        axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/?token=sk_3d2eb0ffc27c4c3bbfb0a159f4a0112d`)
+        axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/?token=${token}`)
+        // axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/?token=sk_3d2eb0ffc27c4c3bbfb0a159f4a0112d`) 
         // axios.get(`https://api.twelvedata.com/time_series?symbol=${ticker}&interval=${range}&apikey=b0258fd3199a4e6ea92790d4e7db7382`)
     );
 }
