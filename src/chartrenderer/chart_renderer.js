@@ -119,8 +119,8 @@ export default class ChartRenderer {
                     this.inputElement.placeholder = "Search Stock Ticker...";
                     // console.log('this works');
                 }).catch(() => {
-                    console.log("Bad ticker bro");
-                    console.log(this.inputElement.id = "shake");
+                    // console.log("Bad ticker bro");
+                    this.inputElement.id = "shake";
                     this.inputElement.placeholder = "Invalid Ticker";
                 })
 
@@ -132,9 +132,9 @@ export default class ChartRenderer {
                     this.updateChart(data.data)
                     this.inputElement.placeholder = "Search Stock Ticker...";
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                     this.inputElement.placeholder = "Invalid Ticker";
-                    // console.log(this.inputElement.id = "shake");
+                    this.inputElement.id = "shake";
                 })
             } else {
                 this.inputElement.id = "shake";
@@ -162,7 +162,7 @@ export default class ChartRenderer {
                     this.inputElement.placeholder = "Search Stock Ticker...";
 
                 }).catch(() => {
-                    console.log("Bad ticker bro");
+                    // console.log("Bad ticker bro");
                     this.inputElement.id = "shake"
                     this.inputElement.placeholder = "Invalid Ticker";
                 })
@@ -174,12 +174,12 @@ export default class ChartRenderer {
                     this.updateChart(data.data)
 
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
-                    console.log(this.inputElement.id = "shake");
+                    // console.log("BROOO Bad ticker bro");
+                    this.inputElement.id = "shake";
                 })
 
             } else {
-                console.log(this.inputElement.id = "shake");
+                this.inputElement.id = "shake";
 
             }
             this.inputElement.id = "search-input"
@@ -197,7 +197,7 @@ export default class ChartRenderer {
                 getHistoricalData(sym,range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                 })
             })
         }) 
@@ -212,7 +212,7 @@ export default class ChartRenderer {
                 getHistoricalData(sym, range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                 })
             })
         })
@@ -227,7 +227,7 @@ export default class ChartRenderer {
                 getHistoricalData(sym, range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                 })
             })
         })
@@ -242,7 +242,7 @@ export default class ChartRenderer {
                 getHistoricalData(sym, range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                 })
             })
         })
@@ -257,7 +257,7 @@ export default class ChartRenderer {
                 getHistoricalData(sym, range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                 })
             })
         })
@@ -272,7 +272,7 @@ export default class ChartRenderer {
                 getHistoricalData(sym, range).then(data => {
                     this.updatetime(data.data)
                 }).catch(() => {
-                    console.log("BROOO Bad ticker bro");
+                    // console.log("BROOO Bad ticker bro");
                 })
             })
         })
@@ -425,16 +425,16 @@ export default class ChartRenderer {
             let olddata = dataset[dataset.length-1].data
             let ll = Math.ceil(olddata.length/10)
             // console.log(olddata);
-            console.log(ll)
+
             let firstsum = 0
             for(let j =0; j <ll; j++) {
                 firstsum += parseFloat(olddata[j])
-            console.log(firstsum);}
+
             let avgfirstsum = firstsum/ll
-            console.log(avgfirstsum);
+
             let macdArr = []
             for (let k = 0; k < ll; k++) {macdArr.push(avgfirstsum)}
-            console.log(macdArr);
+
 
             for (let i=0; i< olddata.length; i++) {
                 let sumsum = 0
@@ -455,7 +455,7 @@ export default class ChartRenderer {
                 backgroundColor: `rgb(255,255,255)`
             }
 
-            console.log(pushdata)
+
             this.chart.config.data.datasets.push(pushdata)
             this.chart.update()
         }
@@ -463,19 +463,10 @@ export default class ChartRenderer {
         
     }
 
-    applyLogScale() {
-        this.chart.config.options.scales.y.type = "logarithmic" 
+    // applyLogScale() {
+    //     this.chart.config.options.scales.y.type = "logarithmic" 
+    // }
     }
+
+
 }
-
-
-// const test = [{ date: 01, price: 11 }, { date: 02, price: 12 }, { date: 03, price: 13 }]
-// console.log(test);
-// console.log('yo');
-// let arr1 = []
-// let arr2 = []
-// values.forEach(element => {
-//     arr1.push(element.datetime)
-//     arr2.push(element.close)
-// });
-

@@ -25,7 +25,7 @@ export default class StockInfo {
     }
 
     updateData(symbol = "Stock Ticker", peRatio = "0", avgvolume = "0", wkhigh52 = "0", wklow52 = "0", cp = "0") {
-        console.log("stockInfo updating...");
+
         // dataLabels = dataLabels(data)
 
         let disstockInfo = this.stockInfo
