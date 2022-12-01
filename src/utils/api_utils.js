@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const token = `sk_a618e14a285e467fa973af590a42a321`
+// const token = `sk_a618e14a285e467fa973af590a42a321`
+const token = `sk_992658d61dc7482d8da26ae70be9b06b`
+
 
 export const getTickerData = (ticker) => {
     return Promise.resolve(
@@ -27,7 +29,7 @@ export const yahooData = (ticker, range = '1month') => {
 }
 
 
-// (getTickerData("AAPL").then(data => {console.log(data);}));
+
 // 1. https://cloud.iexapis.com/stable
 // 2. /stock/${ticker}
 //       /stock/aapl/chart/1y
