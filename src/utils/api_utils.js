@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // const token = `sk_a618e14a285e467fa973af590a42a321`
-const token = `sk_992658d61dc7482d8da26ae70be9b06b`
+// const token = `sk_992658d61dc7482d8da26ae70be9b06b`
+const token = `sk_8ac5181cdf8e4ba4a5d029e46aefc7b8`
+
 
 
 export const getTickerData = (ticker) => {
