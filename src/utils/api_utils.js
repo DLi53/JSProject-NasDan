@@ -10,24 +10,28 @@ import axios from 'axios';
 // const token = 'sk_7df1a82f28e74cdba723bc09daad63c3'
 const token = 'sk_8805f42c08f84be99d44789c5bf13609'
 
-// const token = GJUQ4UJFZ15E0MOY
+const tokenA = 'GJUQ4UJFZ15E0MOY'
 
 
 
 
 export const getTickerData = (ticker) => {
+    
     return Promise.resolve(
-        axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${token}`)
+        // console.log('hi')
+        // axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${token}`)
         // axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=sk_3d2eb0ffc27c4c3bbfb0a159f4a0112d`)
-
+        axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${ticker}&apikey=${tokenA}`)
     );
 }
 
-export const getHistoricalData = (ticker,range='1m') => {
+// export const getHistoricalData = (ticker,range='1m') => {
+export const getHistoricalData = (ticker,range='TIME_SERIES_WEEKLY') => {
     return Promise.resolve(
-        axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/?token=${token}`)
+        // axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/?token=${token}`)
         // axios.get(`https://cloud.iexapis.com/stable/stock/${ticker}/chart/${range}/?token=sk_3d2eb0ffc27c4c3bbfb0a159f4a0112d`) 
         // axios.get(`https://api.twelvedata.com/time_series?symbol=${ticker}&interval=${range}&apikey=b0258fd3199a4e6ea92790d4e7db7382`)
+        axios.get(`https://www.alphavantage.co/query?function=${range}&symbol=${ticker}&apikey=${tokenA}`)
     );
 }
 

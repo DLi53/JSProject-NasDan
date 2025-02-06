@@ -117,7 +117,7 @@ export default class ChartRenderer {
                 getTickerData(ticker).then(data => {
                     this.updateData(data);
                     this.inputElement.placeholder = "Search Stock Ticker...";
-                    // console.log('this works');
+                    console.log('this works');
                 }).catch(() => {
                     // console.log("Bad ticker bro");
                     this.inputElement.id = "shake";
@@ -264,7 +264,6 @@ export default class ChartRenderer {
 
         this.maxbutton.addEventListener("click", e => {
             e.preventDefault();
-            const range = "max"
             const ticker = this.chart.config.data.datasets
             // this.clearChart()
             ticker.forEach(object => {

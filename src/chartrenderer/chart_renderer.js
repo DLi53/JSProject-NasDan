@@ -105,7 +105,7 @@ export default class ChartRenderer {
         this.searchBar.addEventListener("submit", e => {
             e.preventDefault();
 
-
+            console.log('hihii')
             const ticker = this.inputElement.value;
             let labels = []
             this.chart.config.data.datasets.forEach(ele => {
@@ -117,7 +117,7 @@ export default class ChartRenderer {
                 getTickerData(ticker).then(data => {
                     this.updateData(data);
                     this.inputElement.placeholder = "Search Stock Ticker...";
-                    // console.log('this works');
+                    console.log('this works');
                 }).catch(() => {
                     // console.log("Bad ticker bro");
                     this.inputElement.id = "shake";
