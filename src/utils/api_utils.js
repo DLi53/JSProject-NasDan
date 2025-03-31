@@ -37,11 +37,11 @@ export const getHistoricalData = (ticker,range='TIME_SERIES_WEEKLY') => {
 
 // https://cloud.iexapis.com/stable/stock/aapl/chart/date/20210104?token=MY_TOKEN
 
-export const yahooData = (ticker, range = '1month') => {
-    return Promise.resolve(
-        axios.get(`https://query1.finance.yahoo.com/v8/finance/chart/aapl`)
-    );
-}
+// export const yahooData = (ticker, range = '1month') => {
+//     return Promise.resolve(
+//         axios.get(`https://query1.finance.yahoo.com/v8/finance/chart/aapl`)
+//     );
+// }
 
 
 
